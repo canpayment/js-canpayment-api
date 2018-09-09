@@ -1,0 +1,24 @@
+{
+  "name": "js-canpayment-api",
+  "version": "1.0.0",
+  "description": "An API binding for JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: I haven't implemented test yet.\" && exit 1",
+    "doc": "jsdoc index.js -d docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [],
+  "author": "cancan",
+  "license": "ISC",
+  "devDependencies": {
+    "jsdoc": "^3.5.5"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "qs": "^6.5.2"
+  }
+}
