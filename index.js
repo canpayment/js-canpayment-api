@@ -75,7 +75,7 @@ class Canpay {
     return true
   }
   /**
-   * Get wallets (MONA,XRP,JPY,ZNY,ALIS etc.)
+   * Get wallets (MONA,XRP,JPY,ZNY, etc.)
    * Caution: It contains the secret key of XRP.
    * @param {string} cur - retrieve all available wallets if omitted
    * @returns {Object[]} wallets
@@ -114,7 +114,7 @@ class Canpay {
   issueInvoice({// original=generatPayment
     currency,amount // original amount=fee
   }){
-    return this.request("post",`/payments`,{currency,fee:amount})
+    return this.request("post",`/payments`,{currency:currency.toUpperCase(),fee:amount})
   }
   /**
    * Get history of paid invoice of yours.
@@ -255,5 +255,23 @@ class Canpay {
       type
     })
   }
+  requestJpyWithdrawal(amount){
+    return this.request("post","/transfer_requests",{
+      amount
+    })
+  }
 }
+Canpay.banks=[
+  { name: "\u4e09\u83f1UFJ\u9280\u884c", code: "0005" },
+  { name: "\u307f\u305a\u307b\u9280\u884c", code: "0001" },
+  { name: "\u308a\u305d\u306a\u9280\u884c", code: "0010" },
+  { name: "\u57fc\u7389\u308a\u305d\u306a\u9280\u884c", code: "0017" },
+  { name: "\u4e09\u4e95\u4f4f\u53cb\u9280\u884c", code: "0009" },
+  {
+    name: "\u30b8\u30e3\u30d1\u30f3\u30cd\u30c3\u30c8\u9280\u884c",
+    code: "0033"
+  },
+  { name: "\u697d\u5929\u9280\u884c", code: "0036" },
+  { name: "\u3086\u3046\u3061\u3087\u9280\u884c", code: "9900" }
+]
 module.exports=Canpay
